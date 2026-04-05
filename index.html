@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BeautyGlow | Luxury Gold Edition</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --gold: #d4af37;
+            --dark-gold: #aa841e;
+            --black: #0a0a0a;
+            --light-black: #151515;
+            --gray: #2d2d2d;
+            --white: #ffffff;
+            --gold-gradient: linear-gradient(45deg, #d4af37, #f7ef8a, #aa841e);
+        }
+
+        /* Animasi Transisi Halaman */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            background: radial-gradient(circle at top, #1a1a1a 0%, #050505 100%);
+            color: var(--white);
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+
+        h1, h2, h3, .price {
+            font-family: 'Playfair Display', serif;
+        }
+
+        /* Navigasi Premium */
+        nav {
+            background: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--gold);
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav a {
+            color: var(--gold);
+            text-decoration: none;
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 0.85em;
+            letter-spacing: 2px;
+            cursor: pointer;
+            transition: 0.3s;
+            position: relative;
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 1px;
+            bottom: -5px;
+            left: 0;
+            background: var(--gold);
+            transition: 0.3s;
+        }
+
+        nav a:hover::after { width: 100%; }
+        nav a:hover { color: var(--white); text-shadow: 0 0 10px var(--gold); }
+
+        /* Header / Hero Section */
+        header {
+            text-align: center;
+            padding: 100px 20px;
+            background: url('https://www.transparenttextures.com/patterns/dark-matter.png');
+            border-bottom: 1px solid rgba(212, 175, 55, 0.3);
+        }
+
+        h1 { 
+            background: var(--gold-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-size: 3.5em; 
+            margin-bottom: 10px;
+            letter-spacing: 5px;
+        }
+
+        /* Containers & Animations */
+        .page { 
+            padding: 40px 20px; 
+            min-height: 80vh; 
+            animation: fadeIn 0.8s ease-out forwards;
+        }
+        .hidden { display: none; }
+
+        /* Card Styling */
+        .card {
+            background: linear-gradient(145deg, #1a1a1a, #0a0a0a);
+            border: 1px solid var(--gray);
+            border-radius: 20px;
+            padding: 25px;
+            text-align: center;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card:hover { 
+            border-color: var(--gold); 
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 10px 30px rgba(212, 175, 55, 0.2);
+        }
+
+        .card img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            border-radius: 15px;
+            margin-bottom: 20px;
+            border: 1px solid rgba(212, 175, 55, 0.1);
+        }
+
+        /* Testimoni Luxury */
+        .testi-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 50px;
+            max-width: 1200px;
+            margin-inline: auto;
+        }
+
+        .testi-card {
+            background: rgba(255, 255, 255, 0.03);
+            border-left: 3px solid var(--gold);
+            padding: 20px;
+            width: 300px;
+            border-radius: 0 15px 15px 0;
+            text-align: left;
+            transition: 0.3s;
+        }
+
+        .testi-card:hover { background: rgba(212, 175, 55, 0.1); }
+        .stars { color: var(--gold); margin-bottom: 10px; }
+
+        /* Tombol & Input */
+        button {
+            background: var(--gold-gradient);
+            color: var(--black);
+            border: none;
+            padding: 15px;
+            border-radius: 8px;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            cursor: pointer;
+            width: 100%;
+            margin-top: 15px;
+            transition: 0.4s;
+        }
+
+        button:hover { 
+            transform: scale(1.05);
+            box-shadow: 0 0 20px rgba(212, 175, 55, 0.4);
+            filter: brightness(1.2);
+        }
+
+        /* Grid */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* Form */
+        input, textarea {
+            background: #1a1a1a;
+            border: 1px solid var(--gray);
+            color: white;
+            padding: 12px;
+            border-radius: 5px;
+            outline: none;
+        }
+        input:focus, textarea:focus { border-color: var(--gold); }
+
+        /* Notif */
+        #notif {
+            position: fixed;
+            top: 30px;
+            right: 30px;
+            background: var(--gold-gradient);
+            color: var(--black);
+            padding: 15px 30px;
+            border-radius: 10px;
+            display: none;
+            z-index: 2000;
+            font-weight: bold;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+            animation: fadeIn 0.3s ease;
+        }
+
+        footer {
+            background: #050505;
+            text-align: center;
+            padding: 60px 20px;
+            border-top: 1px solid var(--gold);
+            margin-top: 50px;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="notif">✨ Ditambahkan ke Keranjang!</div>
+
+    <nav>
+        <a onclick="showPage('home')">Home</a>
+        <a onclick="showPage('produk')">Koleksi</a>
+        <a onclick="showPage('estimasi')">Estimasi</a>
+        <a onclick="showPage('rute')">Rute</a>
+    </nav>
+
+    <div id="home" class="page">
+        <header>
+            <h1>BEAUTYGLOW</h1>
+            <p style="letter-spacing: 3px; color: #888;">LUXURY COSMETICS FOR ELEGANCE</p>
+            <br>
+            <button onclick="showPage('produk')" style="width: auto; padding: 15px 50px; font-size: 1em;">JELAJAHI KOLEKSI</button>
+        </header>
+        
+        <div style="text-align: center; margin-top: 80px;">
+            <h2 style="color: var(--gold); font-size: 2em; margin-bottom: 40px;">Apa Kata Mereka?</h2>
+            <div class="testi-container">
+                <div class="testi-card">
+                    <div class="stars">⭐⭐⭐⭐⭐</div>
+                    <p>"Kualitas internasional dengan harga terjangkau! Packaging sangat mewah."</p>
+                    <strong>- Putri, Jakarta</strong>
+                </div>
+                <div class="testi-card">
+                    <div class="stars">⭐⭐⭐⭐⭐</div>
+                    <p>"Lipstick Matte-nya tidak membuat bibir kering. Warnanya sangat pigmented!"</p>
+                    <strong>- Santi, Surabaya</strong>
+                </div>
+                <div class="testi-card">
+                    <div class="stars">⭐⭐⭐⭐⭐</div>
+                    <p>"Pengiriman sangat cepat ke Aceh. Packing aman dengan bubble wrap tebal."</p>
+                    <strong>- Linda, Banda Aceh</strong>
+                </div>
+                <div class="testi-card">
+                    <div class="stars">⭐⭐⭐⭐⭐</div>
+                    <p>"Foundation-nya tahan lama dipakai seharian. Benar-benar luxury brand!"</p>
+                    <strong>- Bunga, Bandung</strong>
+                </div>
+                <div class="testi-card">
+                    <div class="stars">⭐⭐⭐⭐⭐</div>
+                    <p>"Sangat bangga ada produk lokal dengan kualitas sekelas High-End luar negeri."</p>
+                    <strong>- Maya, Medan</strong>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="produk" class="page hidden">
+        <h2 style="text-align: center; color: var(--gold); margin-bottom: 50px; font-size: 2.5em;">Katalog Produk Premium</h2>
+        <div class="grid">
+            <div class="card">
+                <img src="https://i.pinimg.com/736x/16/e4/b3/16e4b31132312b8f4ce631c9fe0da9cd.jpg">
+                <h3>Golden Matte Lipstick</h3>
+                <p class="price">Rp 350.000</p>
+                <button onclick="tambahKeKeranjang('Golden Matte Lipstick', 350000)">BELI SEKARANG</button>
+            </div>
+            <div class="card">
+                <img src="https://i.pinimg.com/736x/a5/6a/4e/a56a4ee3be7708f4dd69c0afa9d96650.jpg">
+                <h3>Luxury Foundation</h3>
+                <p class="price">Rp 400.000</p>
+                <button onclick="tambahKeKeranjang('Luxury Foundation', 400000)">BELI SEKARANG</button>
+            </div>
+            <div class="card">
+                <img src="https://i.pinimg.com/736x/19/6a/53/196a53290bdad1be6dd388ad7e3d6791.jpg">
+                <h3>Silky Face Powder</h3>
+                <p class="price">Rp 445.000</p>
+                <button onclick="tambahKeKeranjang('Silky Face Powder', 445000)">BELI SEKARANG</button>
+            </div>
+            <div class="card">
+                <img src="https://i.pinimg.com/1200x/aa/c3/74/aac374eace23e275b258e4d4d7b6c29f.jpg">
+                <h3>Rose Gold Blush</h3>
+                <p class="price">Rp 599.000</p>
+                <button onclick="tambahKeKeranjang('Rose Gold Blush', 599000)">BELI SEKARANG</button>
+            </div>
+            <div class="card">
+                <img src="https://i.pinimg.com/736x/bf/6d/0b/bf6d0bfa982bb84d9e8f0aaee9409f44.jpg">
+                <h3>Eye Shadow Palette</h3>
+                <p class="price">Rp 210.000</p>
+                <button onclick="tambahKeKeranjang('Eye Shadow Palette', 210000)">BELI SEKARANG</button>
+            </div>
+            <div class="card">
+                <img src="https://i.pinimg.com/1200x/f2/8c/fe/f28cfe2c282f98ce64e8d25308e38d19.jpg">
+                <h3>Mascara Waterproof</h3>
+                <p class="price">Rp 115.000</p>
+                <button onclick="tambahKeKeranjang('Mascara Waterproof', 115000)">BELI SEKARANG</button>
+            </div>
+        </div>
+
+        <div id="cartSection" style="max-width: 500px; margin: 60px auto; background: rgba(20,20,20,0.8); padding: 30px; border-radius: 20px; border: 1px solid var(--gold); backdrop-filter: blur(10px);">
+            <h3 style="color: var(--gold); text-align: center; margin-bottom: 20px;">Keranjang Belanja 🛒</h3>
+            <div id="isiKeranjang" style="border-bottom: 1px solid #333; padding-bottom: 15px; margin-bottom: 15px;">Keranjang kosong</div>
+            <h4 id="totalBelanja" style="font-size: 1.4em; text-align: right;">Total: Rp 0</h4>
+            <input type="text" id="nama" placeholder="Nama Lengkap" style="width: 95%; margin-bottom: 10px;">
+            <textarea id="alamat" placeholder="Alamat Lengkap Pengiriman" style="width: 95%; height: 80px; margin-bottom: 10px;"></textarea>
+            <button onclick="checkout()">Konfirmasi via WhatsApp</button>
+        </div>
+    </div>
+
+    <div id="estimasi" class="page hidden">
+        <h2 style="text-align: center; color: var(--gold);">Estimasi Pengiriman</h2>
+        <div style="max-width: 600px; margin: 0 auto; background: var(--light-black); padding: 30px; border-radius: 20px; border: 1px solid var(--gold);">
+            <table style="width: 100%; border-collapse: collapse;">
+                <tr style="border-bottom: 1px solid var(--gold);">
+                    <th style="padding: 15px; text-align: left;">Wilayah</th>
+                    <th style="padding: 15px; text-align: right;">Durasi</th>
+                </tr>
+                <tr><td style="padding: 15px;">DKI Jakarta</td><td style="padding: 15px; text-align: right;">1 Hari (Sameday)</td></tr>
+                <tr><td style="padding: 15px;">Jawa Barat / Tengah</td><td style="padding: 15px; text-align: right;">2 - 3 Hari</td></tr>
+                <tr><td style="padding: 15px;">Sumatera & Kalimantan</td><td style="padding: 15px; text-align: right;">4 - 6 Hari</td></tr>
+            </table>
+        </div>
+    </div>
+
+    <div id="rute" class="page hidden">
+        <h2 style="text-align: center; color: var(--gold);">Lacak Perjalanan</h2>
+        <div style="max-width: 600px; margin: 0 auto; background: var(--light-black); padding: 30px; border-radius: 20px; border: 1px solid var(--gold);">
+            <div class="step"><div class="dot"></div><div class="line"></div><p><strong>Gudang BeautyGlow</strong><br><small>Proses Pengemasan</small></p></div>
+            <div class="step"><div class="dot"></div><div class="line"></div><p><strong>Pusat Transit</strong><br><small>Sortir Wilayah</small></p></div>
+            <div class="step"><div class="dot"></div><div class="line"></div><p><strong>On Delivery</strong><br><small>Kurir menuju lokasi</small></p></div>
+            <div class="step"><div class="dot"></div><p><strong>Diterima</strong><br><small>Pesanan Selesai</small></p></div>
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15866.447385474668!2d106.8271528!3d-6.1753924!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69f5d2e764b12d%3A0x3d2ad231bdc3082!2sMonumen%20Nasional!5e0!3m2!1sid!2sid!4v1710000000000" width="100%" height="250" style="border:0; border-radius: 15px; margin-top:20px;" allowfullscreen="" loading="lazy"></iframe>
+        </div>
+    </div>
+
+    <footer>
+        <h2 style="color: var(--gold); margin-bottom: 10px;">BEAUTYGLOW</h2>
+        <p>Eksklusivitas dalam setiap pulasan.</p>
+        <p style="margin-top: 20px;">Instagram: @beautyglow_id | WhatsApp: 0813-6776-5844</p>
+        <p style="font-size: 0.7em; color: #555; margin-top: 30px;">© 2026 BeautyGlow Luxury Indonesia. All Rights Reserved.</p>
+    </footer>
+
+    <script>
+        let keranjang = [];
+        let total = 0;
+
+        function showPage(id) {
+            document.querySelectorAll('.page').forEach(p => p.classList.add('hidden'));
+            document.getElementById(id).classList.remove('hidden');
+            window.scrollTo({top: 0, behavior: 'smooth'});
+        }
+
+        function tambahKeKeranjang(nama, harga) {
+            keranjang.push({nama, harga});
+            total += harga;
+            
+            const notif = document.getElementById('notif');
+            notif.style.display = 'block';
+            setTimeout(() => { notif.style.display = 'none'; }, 2500);
+
+            renderKeranjang();
+        }
+
+        function renderKeranjang() {
+            const container = document.getElementById('isiKeranjang');
+            const totalText = document.getElementById('totalBelanja');
+            
+            if (keranjang.length === 0) {
+                container.innerHTML = "Keranjang kosong";
+            } else {
+                container.innerHTML = keranjang.map(i => `
+                    <div style="display:flex; justify-content:space-between; margin-bottom:10px;">
+                        <span>${i.nama}</span>
+                        <span style="color:var(--gold)">Rp ${i.harga.toLocaleString()}</span>
+                    </div>`).join('');
+            }
+            totalText.innerText = "Total: Rp " + total.toLocaleString();
+        }
+
+        function checkout() {
+            let n = document.getElementById('nama').value;
+            let a = document.getElementById('alamat').value;
+
+            if(!n || !a || keranjang.length === 0) return alert("Lengkapi data dan pilih produk!");
+
+            let msg = `Halo BeautyGlow, saya ingin memesan premium set:%0A`;
+            keranjang.forEach(i => msg += `- ${i.nama}%0A`);
+            msg += `%0ATotal Tagihan: Rp ${total.toLocaleString()}%0ANama: ${n}%0AAlamat: ${a}`;
+            
+            window.open(`https://wa.me/6281367765844?text=${msg}`);
+        }
+    </script>
+</body>
+</html>
